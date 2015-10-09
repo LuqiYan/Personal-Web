@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Algorithm</title>
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+</head>
+<body>
+<div class="head_title">
+    <h1>JavaScript: Algorithm</h1>
+</div>
+<div class="col-md-offset-1 col-md-10">
+    <div>
+        <h2>1. Quick Sort</h2>
+        <div class="code_style">
+    <pre class="prettyprint lang-javascript">
+    'use strict';
+    function quick_sort(arr){
+        if(arr.length === 0){
+            return [];
+        }
+        var left = [], right = [];
+        var pivot = arr[0];
+        var i;
+        for(i = 1; i < arr.length; i++){
+            arr[i] < arr[0] ? left.push(arr[i]) : right.push(arr[i]);
+        }
+        return quick_sort(left).concat(pivot, quick_sort(right));
+    }
+    console.log(quick_sort([5,1,4,2,8]));
+    //[1, 2, 4, 5, 8]
+    </pre>
+        </div>
+    </div>
+
+    <div>
+        <h2>2. Selection Sort</h2>
+        <div class="code_style">
+    <pre class="prettyprint lang-javascript">
+    function selection_sort(arr){
+        var i, j, min, temp;
+        for(i = 0; i < arr.length - 1; i++){
+            min = i;
+            for(j = i + 1; j < arr.length; j++){
+                if(arr[j] < arr[min]){
+                    min = j;
+                }
+            }
+            if(min !== i){
+                temp = arr[i];
+                arr[i] = arr[min];
+                arr[min] = temp;
+            }
+        }
+        return arr;
+    }
+    console.log(selection_sort([5,1,4,2,8]));
+    //[1, 2, 4, 5, 8]
+    </pre>
+        </div>
+    </div>
+
+    <div>
+        <h2>3. Insertion Sort</h2>
+        <div class="code_style">
+    <pre class="prettyprint lang-javascript">
+    function insertion_sort(arr){
+        var i, j, temp;
+        for(i = 0; i < arr.length; i ++){
+            temp = arr[i];
+            for(j = i - 1; j > -1 && arr[j] > temp; j--){
+                arr[j + 1] = arr[j];
+            }
+            arr[j + 1] = temp;
+        }
+        return arr;
+    }
+    console.log(insertion_sort([5,1,4,2,8]));
+    //[1, 2, 4, 5, 8]
+    </pre>
+        </div>
+    </div>
+
+    <div>
+        <h2>4. Bubble Sort</h2>
+        <div class="code_style">
+    <pre class="prettyprint lang-javascript">
+    function bubble_sort(arr){
+        var i, temp;
+        var swapped = true;
+        while(swapped){
+            swapped = false;
+            for(i = 0; i < arr.length; i++){
+                if(arr[i] > arr[i+1]){
+                    temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                    swapped = true;
+                }
+            }
+        }
+        return arr;
+    }
+    console.log(bubble_sort([5,1,4,2,8]));
+    //[1, 2, 4, 5, 8]
+    </pre>
+        </div>
+    </div>
+
+    <div>
+        <h2>5. Merge Sort</h2>
+        <div class="code_style">
+    <pre class="prettyprint lang-javascript">
+    function merge_sort(arr){
+        var mid = Math.floor(arr.length /2);
+        var sort_result = [];
+        if(arr.length === 1){
+            return arr;
+        }
+        function sort(left, right){
+            while(left.length && right.length){
+                sort_result.push(left[0] < right[0] ? left.shift() : right.shift());
+            }
+            return sort_result.concat(left).concat(right);
+        }
+        return sort(merge_sort(arr.slice(0,mid)), merge_sort(arr.slice(mid)));
+    }
+    console.log(merge_sort([5,1,4,2,8]));
+    //[1, 2, 4, 5, 8]
+    </pre>
+        </div>
+    </div>
+
+    <div>
+        <h2>6. Combinations</h2>
+        <p><b>Question:</b> Write a JavaScript function that generates all combinations of a string.</p>
+        <div class="code_style">
+    <pre class="prettyprint lang-javascript">
+    'use strict';
+    function combination(str){
+        var comb = [];
+        function cal(result, rest){
+            var i;
+            for(i = 0; i < rest.length; i ++){
+                comb.push(result + rest[i]);
+                cal(result + rest[i], rest.slice(i+1));
+            }
+            return comb;
+        }
+        return cal('', str);
+    }
+    console.log(combination('abcd'));
+    //["a", "ab", "abc", "abcd", "abd", "ac", "acd", "ad", "b", "bc", "bcd", "bd", "c", "cd", "d"]
+    </pre>
+        </div>
+    </div>
+
+    <div>
+        <h2>7. Permutations</h2>
+        <p><b>Question:</b> Given a collection of numbers, write a JavaScript function that generates
+            all possible permutations.</p>
+        <div class="code_style">
+    <pre class="prettyprint lang-javascript">
+    'use strict';
+    function permute(nums) {
+        var permutation_list = [];
+        var usedChars = [];
+        function cal(input){
+            var i, char;
+            for(i = 0; i < input.length; i++){
+                char = input.splice(i, 1)[0];
+                usedChars.push(char);
+                if(input.length === 0) {
+                    permutation_list.push(usedChars.slice());
+                }
+                cal(input);
+                input.splice(i, 0, char);
+                usedChars.pop();
+            }
+            return permutation_list;
+        }
+        return cal(nums);
+    }
+    console.log(permute([1,2,3]));
+    //[[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]
+    </pre>
+        </div>
+    </div>
+
+    <div>
+        <h2>8. Minimum Coin Change</h2>
+        <p><b>Question:</b> Given a set of coins and amount, write an JavaScript Function to find out
+            minimum number of coins required to make change for an amount of money.</p>
+        <div class="code_style">
+    <pre class="prettyprint lang-javascript">
+    'use strict';
+    /* dynamic programming */
+    function miniCoinChange_pd(coins, amount){
+        var i, j, m, n;
+        var coin_number = [],
+                coin_list = [];
+        if(amount === 0){
+            return 0;
+        }
+        for(i = 1; i <= amount; i++){
+            coin_number[i] = amount;
+        }
+        for(j = 0; j < coins.length; j++){
+            coin_number[coins[j]] = 1;
+            coin_list[coins[j]] = coins[j].toString();
+        }
+        for(m = 1; m <= amount; m++){
+            for(n=0; n <= coins.length; n++) {
+                if (coin_number[m] > coin_number[m - coins[n]] + 1 && m > coins[n]) {
+                    coin_number[m] = coin_number[m - coins[n]] + 1;
+                    coin_list[m] = coin_list[m - coins[n]] + ',' + coins[n];
+                }
+            }
+        }
+        return coin_list[amount];
+    }
+    console.log(miniCoinChange_pd([1,6,10,25], 37));
+    //25,6,6
+    </pre>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- Google Syntax Highlighter, Skin: Desert -->
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=desert"></script>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+</html>
