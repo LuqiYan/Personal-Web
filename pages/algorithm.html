@@ -7,7 +7,7 @@
 
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/js_style.css">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -17,11 +17,29 @@
 
 </head>
 <body>
-<div class="head_title">
+<div id="head_title">
     <h1>JavaScript: Algorithm</h1>
 </div>
+
+<nav id="back_to_top">
+    <a href="#head_title">Back to Top</a>
+</nav>
+
+<div class="col-md-offset-1 col-md-10 content">
+    <ol>
+        <li><a href="#quickSort">Quick Sort</a></li>
+        <li><a href="#selectionSort">Selection Sort</a></li>
+        <li><a href="#insertionSort">Insertion Sort</a></li>
+        <li><a href="#bubbleSort">Bubble Sort</a></li>
+        <li><a href="#mergeSort">Merge Sort</a></li>
+        <li><a href="#combinations">Combinations</a></li>
+        <li><a href="#permutations">Permutations</a></li>
+        <li><a href="#minCoinChange">Minimum Coin Change</a></li>
+    </ol>
+</div>
+
 <div class="col-md-offset-1 col-md-10">
-    <div>
+    <div id="quickSort">
         <h2>1. Quick Sort</h2>
         <div class="code_style">
     <pre class="prettyprint lang-javascript">
@@ -44,7 +62,7 @@
         </div>
     </div>
 
-    <div>
+    <div id="selectionSort">
         <h2>2. Selection Sort</h2>
         <div class="code_style">
     <pre class="prettyprint lang-javascript">
@@ -71,7 +89,7 @@
         </div>
     </div>
 
-    <div>
+    <div id="insertionSort">
         <h2>3. Insertion Sort</h2>
         <div class="code_style">
     <pre class="prettyprint lang-javascript">
@@ -92,16 +110,18 @@
         </div>
     </div>
 
-    <div>
+    <div id="bubbleSort">
         <h2>4. Bubble Sort</h2>
         <div class="code_style">
     <pre class="prettyprint lang-javascript">
     function bubble_sort(arr){
         var i, temp;
+        var j = 0;
         var swapped = true;
         while(swapped){
             swapped = false;
-            for(i = 0; i < arr.length; i++){
+            j++;
+            for(i = 0; i < arr.length - j; i++){
                 if(arr[i] > arr[i+1]){
                     temp = arr[i];
                     arr[i] = arr[i + 1];
@@ -118,7 +138,7 @@
         </div>
     </div>
 
-    <div>
+    <div id="mergeSort">
         <h2>5. Merge Sort</h2>
         <div class="code_style">
     <pre class="prettyprint lang-javascript">
@@ -142,7 +162,7 @@
         </div>
     </div>
 
-    <div>
+    <div id="combinations">
         <h2>6. Combinations</h2>
         <p><b>Question:</b> Write a JavaScript function that generates all combinations of a string.</p>
         <div class="code_style">
@@ -166,7 +186,7 @@
         </div>
     </div>
 
-    <div>
+    <div id="permutations">
         <h2>7. Permutations</h2>
         <p><b>Question:</b> Given a collection of numbers, write a JavaScript function that generates
             all possible permutations.</p>
@@ -198,7 +218,7 @@
         </div>
     </div>
 
-    <div>
+    <div id="minCoinChange">
         <h2>8. Minimum Coin Change</h2>
         <p><b>Question:</b> Given a set of coins and amount, write an JavaScript Function to find out
             minimum number of coins required to make change for an amount of money.</p>

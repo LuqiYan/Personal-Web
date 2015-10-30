@@ -772,10 +772,6 @@ section h3.section-subheading {
     }
 }
 
-aside.clients img {
-    margin: 50px auto;
-}
-
 section#contact {
     background-color: #222;
     background-image: url(../img/map-image.png);
@@ -787,8 +783,8 @@ section#contact #emailMe {
     font-size: 20px;
 }
 
-section#contact #map {
-    width: 600px;
+section#contact #googleMap {
+    max-width: 800px;
     height: 400px;
     background-color: #CCC;
     margin: 0 auto 50px auto;
@@ -969,7 +965,7 @@ ul.social-buttons li a:active {
     opacity: .3;
 }
 
-.portfolio-modal .close-modal .lr {portfolioModal1
+.portfolio-modal .close-modal .lr {
     z-index: 1051;
     width: 1px;
     height: 75px;
