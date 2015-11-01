@@ -845,10 +845,6 @@ section#contact:-ms-input-placeholder {
     color: #bbb;
 }
 
-section#contact .text-danger {
-    color: #e74c3c;
-}
-
 footer {
     padding: 25px 0;
     text-align: center;
