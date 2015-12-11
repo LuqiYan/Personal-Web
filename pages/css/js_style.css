@@ -1,3 +1,9 @@
+.nav a {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 1.5em;
+}
+
 h2 {
     padding: 50px 0 20px 0;
 }
@@ -8,13 +14,13 @@ h2 {
 
 #head_title h1{
     text-align: center;
-    font-size: 60px;
+    font-size: 4em;
     margin: 50px 0 50px 0;
 }
 
 #back_to_top {
     position: fixed;
-    bottom: 5px;
+    bottom: 0;
     right: 5px;
     z-index: 1;
     font-size: 15px;
